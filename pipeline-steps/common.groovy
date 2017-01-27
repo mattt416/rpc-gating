@@ -10,7 +10,7 @@ def install_ansible(){
         virtualenv --python=/opt/rh/python27/root/usr/bin/python .venv
     fi
     # hack the selinux module into the venv
-    cp -r /usr/lib64/python2.6/site-packages/selinux .venv/lib64/python2.7/site-packages/
+    #cp -r /usr/lib64/python2.6/site-packages/selinux .venv/lib64/python2.7/site-packages/
     source .venv/bin/activate
 
     # These pip commands cannot be combined into one.
