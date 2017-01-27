@@ -9,9 +9,10 @@ def install_ansible(){
     if [[ ! -d ".venv" ]]; then
         virtualenv --python=/opt/rh/python27/root/usr/bin/python .venv
     fi
+    virtualenv .venv
     # hack the selinux module into the venv
     #cp -r /usr/lib64/python2.6/site-packages/selinux .venv/lib64/python2.7/site-packages/
-    . .venv/bin/activate
+    source .venv/bin/activate
 
     # These pip commands cannot be combined into one.
     pip install -U six packaging appdirs
