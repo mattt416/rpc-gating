@@ -5,6 +5,7 @@ import groovy.json.JsonOutput
 def install_ansible(){
   sh """
     #!/bin/bash
+    echo $SHELL
     which scl && source /opt/rh/python27/enable
     if [[ ! -d ".venv" ]]; then
         virtualenv --python=/opt/rh/python27/root/usr/bin/python .venv
