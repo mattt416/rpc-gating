@@ -52,7 +52,7 @@
                 region: env.REGION,
                 flavor: env.FLAVOR,
                 image: env.IMAGE,
-                keyname: "jenkins",
+                keyname: "elk-rpc",
                 workspace: env.WORKSPACE
               )
             } //stage
