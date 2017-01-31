@@ -25,6 +25,9 @@
             name and build number. Beware the 63 char container name limit
             as container names includes the host name.
       - string:
+          name: KEYNAME
+          default: "jenkins"
+      - string:
           name: STAGES
           default: "Allocate Resources, Connect Slave, Cleanup"
           description: |

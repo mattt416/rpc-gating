@@ -24,7 +24,7 @@ def getPubCloudSlave(Map args){
         region: env.REGION,
         flavor: env.FLAVOR,
         image: env.IMAGE,
-        keyname: "jenkins",
+        keyname: env.KEYNAME,
       )
     } //stage
   ) //conditionalStages
