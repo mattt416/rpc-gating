@@ -3,8 +3,7 @@ import groovy.json.JsonOutput
 
 // Install ansible on a jenkins slave
 def install_ansible(){
-  sh """
-    #!/bin/bash
+  sh """#!/bin/bash
     which scl && source /opt/rh/python27/enable
     if [[ ! -d ".venv" ]]; then
         virtualenv --python=/opt/rh/python27/root/usr/bin/python .venv
@@ -101,8 +100,7 @@ def write_json(Map args){
  */
 def run_script(Map args) {
   withEnv(args.environment_vars) {
-    sh """
-        #!/bin/bash
+    sh """#!/bin/bash
         sudo -E ./${args.script}
         """
   }
