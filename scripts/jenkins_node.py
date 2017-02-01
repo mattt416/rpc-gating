@@ -44,12 +44,6 @@ def delete_node(jenkins, name):
 
 
 if __name__ == "__main__":
-    username = os.environ.get("JENKINS_USERNAME")
-    password = os.environ.get("JENKINS_API_KEY")
-    jenkins_url = (os.environ.get("JENKINS_URL") or
-                   "https://rpc.jenkins.cit.rackspace.net/")
-    j = Jenkins(baseurl=jenkins_url, username=username, password=password)
-
     description = "Adds or deletes a Jenkins node via the Jenkins API"
     parser = argparse.ArgumentParser(description=description)
     parser.add_argument("action", choices=['create', 'delete'])
@@ -61,6 +55,12 @@ if __name__ == "__main__":
     parser.add_argument("--remote-dir",
                         help="Path to use as the home directory on the node")
     args = parser.parse_args()
+
+    username = os.environ.get("JENKINS_USERNAME")
+    password = os.environ.get("JENKINS_API_KEY")
+    jenkins_url = (os.environ.get("JENKINS_URL") or
+                   "https://rpc.jenkins.cit.rackspace.net/")
+    j = Jenkins(baseurl=jenkins_url, username=username, password=password)
 
     if args.action == "create":
         create_node(jenkins=j, host_ip=args.ip, name=args.name,
