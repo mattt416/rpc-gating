@@ -31,9 +31,10 @@
           node(instance_name){
             aio_prepare.prepare()
           } // pub cloud node
-        } catch (Exception e){
+        } catch (e){
           currentBuild.result = 'FAILURE'
           print e
+          e.printStackTrace()
         } finally {
           pubCloudSlave.delPubCloudSlave()
         }
