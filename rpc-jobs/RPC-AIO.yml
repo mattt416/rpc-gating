@@ -18,10 +18,10 @@
           node(resources.created[0].name){
             stage("placeholder"){
               sh """
-                echo "further stages to be developed"
-                hostname
-                date
-                uptime
+                cd /opt
+                git clone https://github.com/rcbops/rpc-openstack --recursive
+                cd rpc-openstack
+                DEPLOY_AIO=yes DEPLOY_HAPROXY=yes scripts/deploy.sh
               """
             } //stage
           } // pub cloud node
