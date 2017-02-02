@@ -29,6 +29,7 @@
       copy:
         content: '{{ rax.success|to_json }}'
         dest: '{{lookup("env", "WORKSPACE")}}/rpc-gating/playbooks/resources.json'
+
     - name: Write inventory
       copy:
         content: |
