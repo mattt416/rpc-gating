@@ -10,7 +10,7 @@ def tempest_run(Map args){
     utility_container="\$(lxc-ls |grep -m1 utility)"
     lxc-attach \
       -n \$utility_container \
-      -- /opt/openstack_tempest_gate.sh \
+      -- RUN_TEMPEST_OPTS=${env.RUN_TEMPEST_OPTS} /opt/openstack_tempest_gate.sh \
       ${env.TEMPEST_TEST_SETS}
   """
 }

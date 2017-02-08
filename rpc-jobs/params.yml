@@ -48,3 +48,6 @@
           description: |
             Test sets (space seperated). Test sets are defined in
             https://github.com/openstack/openstack-ansible-os_tempest/blob/master/templates/openstack_tempest_gate.sh.j2
+      - string:
+          name: "RUN_TEMPEST_OPTS"
+          default: "--serial"
