@@ -208,4 +208,19 @@ def gen_instance_name(){
   return instance_name
 }
 
+def writePyraxCfg(Map args){
+  cfg = """[rackspace_cloud]
+username = ${args.username}
+api_key = ${args.api_key}
+"""
+
+  tmp_dir = pwd(tmp:true)
+  pyrax_cfg = "${tmp_dir}/.pyrax.cfg"
+  sh """
+    echo "${cfg}" > ${pyrax_cfg}
+  """
+
+  return pyrax_cfg
+}
+
 return this
