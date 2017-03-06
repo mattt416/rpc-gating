@@ -20,7 +20,7 @@ def create(Map args){
         credentialsId: "dev_pubcloud_api_key",
         variable: "PUBCLOUD_API_KEY"
       ),
-      file(
+      text(
         credentialsId: 'id_rsa_cloud10_jenkins_file',
         variable: 'JENKINS_SSH_PRIVKEY'
       )
@@ -62,7 +62,7 @@ def cleanup(Map args){
         credentialsId: "dev_pubcloud_api_key",
         variable: "PUBCLOUD_API_KEY"
       ),
-      file(
+      text(
         credentialsId: 'id_rsa_cloud10_jenkins_file',
         variable: 'jenkins_ssh_privkey'
       )
