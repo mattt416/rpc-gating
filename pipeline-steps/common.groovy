@@ -68,6 +68,19 @@ def venvPlaybook(Map args){
   } //withenv
 } //venvplaybook
 
+def calc_ansible_forks(){
+  sh"""
+    CPU_NUM=$(grep -c ^processor /proc/cpuinfo)
+    if [ ${CPU_NUM} -lt "10" ]; then
+      ANSIBLE_FORKS=${CPU_NUM}
+    else
+      ANSIBLE_FORKS=10
+    fi
+  """
+  print "Ansible forks: ${ANSIBLE_FORKS}"
+  return env.ANSIBLE_FORKS
+}
+
 def openstack_ansible(Map args){
   if (!('path' in args)){
     args.path = "/opt/rpc-openstack/openstack-ansible/playbooks"
