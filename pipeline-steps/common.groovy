@@ -71,8 +71,8 @@ def venvPlaybook(Map args){
 def calc_ansible_forks(){
   def forks = sh (script: """#!/bin/bash
     CPU_NUM=\$(grep -c ^processor /proc/cpuinfo)
-    if [ ${CPU_NUM} -lt "10" ]; then
-      ANSIBLE_FORKS=${CPU_NUM}
+    if [ \${CPU_NUM} -lt "10" ]; then
+      ANSIBLE_FORKS=\${CPU_NUM}
     else
       ANSIBLE_FORKS=10
     fi
