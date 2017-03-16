@@ -79,7 +79,7 @@ def calc_ansible_forks(){
     ANSIBLE_FORKS=4
     echo "${ANSIBLE_FORKS}"
   """, returnStdout: true)
-  print "Ansible forks: ${forks}"
+  print forks
   return forks
 }
 
