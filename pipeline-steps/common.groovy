@@ -69,16 +69,17 @@ def venvPlaybook(Map args){
 } //venvplaybook
 
 def calc_ansible_forks(){
-  sh"""
+  def forks = sh (script: """#!/bin/bash
     CPU_NUM=$(grep -c ^processor /proc/cpuinfo)
     if [ ${CPU_NUM} -lt "10" ]; then
       ANSIBLE_FORKS=${CPU_NUM}
     else
       ANSIBLE_FORKS=10
     fi
-  """
-  print "Ansible forks: ${ANSIBLE_FORKS}"
-  return env.ANSIBLE_FORKS
+    echo "${ANSIBLE_FORKS}"
+  """, returnStdout: true)
+  print "Ansible forks: ${forks}"
+  return forks
 }
 
 def openstack_ansible(Map args){
