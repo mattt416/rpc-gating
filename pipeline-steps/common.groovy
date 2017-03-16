@@ -92,11 +92,15 @@ def openstack_ansible(Map args){
 
   ansiColor('xterm'){
     dir(args.path){
+      forks = common.calc_ansible_forks()
       withEnv([
         'ANSIBLE_FORCE_COLOR=true',
-        'ANSIBLE_HOST_KEY_CHECKING=False'])
+        'ANSIBLE_HOST_KEY_CHECKING=False',
+        "ANSIBLE_FORKS=${forks}",
+        'ANSIBLE_SSH_RETRIES=3'])
       {
         sh """#!/bin/bash
+          echo ${ANSIBLE_FORKS}
           openstack-ansible ${args.playbook} ${args.args}
         """
       } //withEnv
