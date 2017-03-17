@@ -35,6 +35,7 @@ def deploy_sh(Map args) {
         ansiColor('xterm') {
           dir("/opt/rpc-openstack/") {
             sh """#!/bin/bash
+            env
             scripts/deploy.sh
             """
           } // dir
