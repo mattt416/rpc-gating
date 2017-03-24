@@ -1,5 +1,6 @@
 - project:
     name: 'RPC-AIO-Jobs'
+    defaults: global
     # Note: branch is the branch for periodics to build
     #       branches is the branch pattern to match for PR Jobs.
     series:
@@ -105,7 +106,6 @@
       - single_use_slave_params:
          IMAGE: "{IMAGE}"
          FLAVOR: "performance2-15"
-         REGION: "DFW"
       - tempest_params:
          TEMPEST_TEST_SETS: "scenario defcore cinder_backup"
          RUN_TEMPEST_OPTS: "--serial"

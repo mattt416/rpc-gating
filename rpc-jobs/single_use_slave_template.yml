@@ -1,5 +1,6 @@
 - job:
     name: Single_Use_Slave_Example
+    defaults: global
     project-type: workflow
     concurrent: true
     parameters:
@@ -8,7 +9,6 @@
       - single_use_slave_params:
           IMAGE: "Ubuntu 16.04 LTS (Xenial Xerus) (PVHVM)"
           FLAVOR: "performance2-15"
-          REGION: "DFW"
       - rpc_gating_params
       - string:
           name: STAGES
