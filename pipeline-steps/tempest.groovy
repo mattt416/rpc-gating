@@ -18,13 +18,13 @@ def tempest_run(Map args) {
   return output
 }
 
-def tempest_patch(){
+def tempest_patch(branch){
   dir("/opt/rpc-openstack/openstack-ansible/playbooks") {
     sh"""
       ansible utility -m shell \
-                      -a 'cd /root && wget https://gist.githubusercontent.com/mattt416/638f5196427a26a54340d11ebba1c3f6/raw/tempest-master.diff'
+                      -a 'cd /root && wget https://raw.githubusercontent.com/rcbops/rpc-gating/master/tempest-${branch}.diff'
       ansible utility -m shell \
-                      -a 'cd /openstack/venvs/tempest*/ && git apply /root/tempest-master.diff'
+                      -a 'cd /openstack/venvs/tempest*/ && git apply /root/tempest-${branch}.diff'
     """
   }
 }
@@ -46,7 +46,7 @@ def tempest(Map args){
     stage: {
       tempest_install()
       if (args != null && args.containsKey("vm")) {
-         tempest_patch()
+         tempest_patch(args.branch)
       }
     }
   )

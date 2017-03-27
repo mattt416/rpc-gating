@@ -138,7 +138,7 @@
                 maas.verify()
               }},
               "tempest": {{
-                tempest.tempest(vm: "infra1")
+                tempest.tempest(vm: "infra1", branch: RPC_BRANCH)
               }},
               "horizon": {{
                 horizon.horizon_integration()

@@ -1,0 +1,23 @@
+diff --git a/tempest/scenario/test_minimum_basic.py b/tempest/scenario/test_minimum_basic.py
+index 34a65cb..dcc7e06 100644
+--- a/tempest/scenario/test_minimum_basic.py
++++ b/tempest/scenario/test_minimum_basic.py
+@@ -13,6 +13,8 @@
+ #    License for the specific language governing permissions and limitations
+ #    under the License.
+
++import time
++
+ from tempest.common import custom_matchers
+ from tempest.common import waiters
+ from tempest import config
+@@ -138,6 +140,8 @@ class TestMinimumBasicScenario(manager.ScenarioTest):
+         self.linux_client = self.get_remote_client(
+             floating_ip['ip'], private_key=keypair['private_key'])
+
++        time.sleep(30)
++
+         self.nova_reboot(server)
+
+         # check that we can SSH to the server after reboot
+
