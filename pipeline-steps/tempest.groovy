@@ -18,6 +18,16 @@ def tempest_run(Map args) {
   return output
 }
 
+def tempest_patch(){
+  dir("/opt/rpc-openstack/openstack-ansible/playbooks") {
+    sh"""
+      ansible utility -m shell \
+                      -a 'cd /root && wget https://gist.githubusercontent.com/mattt416/638f5196427a26a54340d11ebba1c3f6/raw/tempest-master.diff'
+      ansible utility -m shell \
+                      -a 'cd /openstack/venvs/tempest*/ && git apply /root/tempest-master.diff'
+    """
+  }
+}
 
 /* if tempest install fails, don't bother trying to run or collect test results
  * however if running fails, we should still collect the failed results
@@ -35,6 +45,9 @@ def tempest(Map args){
     stage_name: "Install Tempest",
     stage: {
       tempest_install()
+      if (args != null && args.containsKey("vm")) {
+         tempest_patch()
+      }
     }
   )
   common.conditionalStage(
