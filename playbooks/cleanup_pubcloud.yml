@@ -20,6 +20,6 @@
         auto_increment: no
         region: "{{ region }}"
       when:
-        - get_rax_facts |success
-        - get_rax_facts.rax_metadata.preserve|bool
+        - get_rax_facts|success
+        - not rax_metadata.preserve|bool
 
