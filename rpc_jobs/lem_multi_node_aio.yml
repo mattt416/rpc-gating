@@ -110,11 +110,14 @@
           }}
           ssh_slave.connect()
           node(INSTANCE_NAME) {{
-            if (env.STAGES.contains("Prepare LEM AIO")) {{
-              sh """
-                 lvcreate -n aio -L250G lxc
-              """
-            }}
+            common.conditionalStage(
+              stage_name: 'Prepare LEM AIO',
+              stage: {
+                sh """
+                   lvcreate -n aio -L250G lxc
+                """
+              } //stage
+            ) //conditionalStage
             multi_node_aio_prepare.prepare()
             deploy.deploy_sh(
               environment_vars: [
