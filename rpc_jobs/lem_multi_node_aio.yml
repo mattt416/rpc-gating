@@ -59,7 +59,7 @@
           TESTR_OPTS: ""
       - string:
           name: STAGES
-          default: "Connect Slave, Prepare LEM AIO, Prepare Multi-Node AIO, Prepare RPC Configs, Deploy RPC w/ Script, Setup MaaS, Verify MaaS, Install Temepst, Tempest Tests, Prepare Kibana Selenium, Kibana Tests, Holland, Destroy Slave"
+          default: "Connect Slave, Prepare LEM AIO, Prepare Multi-Node AIO, Prepare RPC Configs, Deploy RPC w/ Script, Install Temepst, Tempest Tests, Prepare Kibana Selenium, Kibana Tests, Holland, Destroy Slave"
           description: |
             Pipeline stages to run CSV. Note that this list does not influence execution order.
             Options:
