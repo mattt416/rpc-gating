@@ -25,6 +25,8 @@
         ClientAliveInterval: 15
         Compression: "yes"
   tasks:
+    - debug: var=jenkins_node_labels
+    - debug: var=jenkins_node_executors
     - name: Install apt packages
       apt:
         pkg: "{{ item }}"
