@@ -302,7 +302,11 @@ def archive_artifacts(Map args = [:]){
     results_dir = args.get("results_dir", "${env.WORKSPACE}/results")
 
     dir(results_dir) {
-      junit allowEmptyResults: true, testResults: "*.xml"
+      try:
+        junit allowEmptyResults: true, testResults: "*.xml"
+      } catch (e){
+        println("XXX caught")
+      }
     }
 
     pubcloud.uploadToSwift(
